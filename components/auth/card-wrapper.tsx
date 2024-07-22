@@ -1,6 +1,6 @@
 "use client";
 
-import React, { Suspense } from "react";
+import React from "react";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
 import { Header } from "@/components/auth/header";
 import { Social } from "@/components/auth/social";
@@ -20,21 +20,19 @@ export function CardWrapper({
   showSocial?: boolean;
 }) {
   return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <Card className="w-[400px] shadow-md">
-        <CardHeader>
-          <Header label={headerLabel} />
-        </CardHeader>
-        <CardContent>{children}</CardContent>
-        {showSocial && (
-          <CardFooter>
-            <Social />
-          </CardFooter>
-        )}
+    <Card className="w-[400px] shadow-md">
+      <CardHeader>
+        <Header label={headerLabel} />
+      </CardHeader>
+      <CardContent>{children}</CardContent>
+      {showSocial && (
         <CardFooter>
-          <BackButton label={backButtonLabel} href={backButtonHref} />
+          <Social />
         </CardFooter>
-      </Card>
-    </Suspense>
+      )}
+      <CardFooter>
+        <BackButton label={backButtonLabel} href={backButtonHref} />
+      </CardFooter>
+    </Card>
   );
 }
